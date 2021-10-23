@@ -3,6 +3,7 @@ require 'httparty'
 require 'medium_api/client'
 require 'medium_api/configuration'
 require 'medium_api/user'
+require 'medium_api/utils'
 
 module MediumApi
   class Error < StandardError; end
