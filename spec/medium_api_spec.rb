@@ -32,6 +32,7 @@ RSpec.describe MediumApi do
       end
 
       expect(user.name).to eq('Test Api Key')
+      expect(user.image_url).to_not be_nil
     end
   end
 end

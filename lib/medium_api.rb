@@ -20,7 +20,7 @@ module MediumApi
     def me
       attributes = client.me
 
-      User.new(**attributes)
+      User.new(**Utils.underscore_keys(attributes))
     end
 
     def client
