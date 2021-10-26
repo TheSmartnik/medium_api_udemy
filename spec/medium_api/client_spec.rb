@@ -13,4 +13,48 @@ RSpec.describe MediumApi::Client do
       expect(me['name']).to eq('Test Api Key')
     end
   end
+
+  describe '#user_publications' do
+    let(:user_id) { 'test' }
+
+    specify do
+      publications = VCR.use_cassette 'user_publications' do
+        client.user_publications(user_id)
+      end
+
+      expect(publications.size).to eq(1)
+      expect(publications.first['name']).to eq('ILLUMINATION')
+    end
+  end
+
+  describe '#publication_contributors' do
+    let(:publication_id) { 'eca1ba5ae1ca' }
+
+    specify do
+      contributors = VCR.use_cassette 'publication_contributors' do
+        client.publication_contributors(publication_id)
+      end
+
+      expect(contributors.size).to eq(1030)
+    end
+  end
+
+  describe '#create_user_post' do
+    let(:user_id) { '1b619f0be1bc842ffc55e8a20c7d6c9129ba896467b90ab9e23b86a36fdd2a67e' }
+    let(:post_attributes) do
+      {
+        title: 'Test Title',
+        content: '<h1> Test Title</h1>',
+        content_format: 'html'
+      }
+    end
+
+    specify do
+      data = VCR.use_cassette 'create_user_post' do
+        client.create_user_post(user_id, post_attributes)
+      end
+
+      expect(data['id']).to eq('c051da305038')
+    end
+  end
 end
