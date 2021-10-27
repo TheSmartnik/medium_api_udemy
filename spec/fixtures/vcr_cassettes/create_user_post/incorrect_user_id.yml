@@ -1,0 +1,75 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.medium.com/v1/users/10409f26416b73f01893551f0c777589c88185bcd4aafd953b00f32eff8e0be9e/posts
+    body:
+      encoding: UTF-8
+      string: title=Test%20Title&content=%3Ch1%3E%20Test%20Title%3C%2Fh1%3E&contentFormat=html
+    headers:
+      Authorization:
+      - Bearer 2ada46c383ae76af4ca4dcbe42f7611062644f366bd6281c2efe78202b35f3c60
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 403
+      message: Forbidden
+    headers:
+      Date:
+      - Tue, 26 Oct 2021 23:48:11 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Sepia-Upstream:
+      - medium
+      Access-Control-Allow-Origin:
+      - "*"
+      Cache-Control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      Expires:
+      - Thu, 09 Sep 1999 09:09:09 GMT
+      Link:
+      - <https://medium.com/humans.txt>; rel="humans"
+      Medium-Fulfilled-By:
+      - valencia/main-20211011-154348-f913722d14
+      Pragma:
+      - no-cache
+      Set-Cookie:
+      - uid=lo_b8845a40e3a2; Path=/; Domain=medium.com; Expires=Wed, 26 Oct 2022 23:48:11
+        GMT; HttpOnly; Secure
+      X-Envoy-Upstream-Service-Time:
+      - '58'
+      X-Obvious-Info:
+      - 20211026-2100-root,11f0149b
+      X-Opentracing:
+      - '{"ot-tracer-spanid":"76256f3042c4b734","ot-tracer-traceid":"3c04bcc0e77e56a1","ot-tracer-sampled":"true"}'
+      X-Powered-By:
+      - Medium
+      Cf-Cache-Status:
+      - DYNAMIC
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Strict-Transport-Security:
+      - max-age=15552000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 6a4792f3cdb600b0-DME
+      Alt-Svc:
+      - h3=":443"; ma=86400, h3-29=":443"; ma=86400, h3-28=":443"; ma=86400, h3-27=":443";
+        ma=86400
+    body:
+      encoding: ASCII-8BIT
+      string: '{"errors":[{"message":"You may not publish a post to this user''s profile.","code":2006}]}'
+  recorded_at: Tue, 26 Oct 2021 23:48:11 GMT
+recorded_with: VCR 6.0.0

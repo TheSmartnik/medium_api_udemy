@@ -1,0 +1,75 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.medium.com/v1/users/1b619f0be1bc842ffc55e8a20c7d6c9129ba896467b90ab9e23b86a36fdd2a67e/posts
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Bearer 2ada46c383ae76af4ca4dcbe42f7611062644f366bd6281c2efe78202b35f3c60
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Date:
+      - Tue, 26 Oct 2021 23:46:39 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '60'
+      Connection:
+      - keep-alive
+      Sepia-Upstream:
+      - medium
+      Access-Control-Allow-Origin:
+      - "*"
+      Cache-Control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      Expires:
+      - Thu, 09 Sep 1999 09:09:09 GMT
+      Link:
+      - <https://medium.com/humans.txt>; rel="humans"
+      Medium-Fulfilled-By:
+      - valencia/main-20211011-154348-f913722d14
+      Pragma:
+      - no-cache
+      Set-Cookie:
+      - uid=lo_c9a90a9a59fb; Path=/; Domain=medium.com; Expires=Wed, 26 Oct 2022 23:46:39
+        GMT; HttpOnly; Secure
+      X-Envoy-Upstream-Service-Time:
+      - '72'
+      X-Obvious-Info:
+      - 20211026-2100-root,11f0149b
+      X-Opentracing:
+      - '{"ot-tracer-spanid":"74348bd267dc2a2f","ot-tracer-traceid":"562ad40892a0fe19","ot-tracer-sampled":"true"}'
+      X-Powered-By:
+      - Medium
+      Cf-Cache-Status:
+      - DYNAMIC
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Strict-Transport-Security:
+      - max-age=15552000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 6a4790b36be97903-DME
+      Alt-Svc:
+      - h3=":443"; ma=86400, h3-29=":443"; ma=86400, h3-28=":443"; ma=86400, h3-27=":443";
+        ma=86400
+    body:
+      encoding: UTF-8
+      string: '{"errors":[{"message":"No content specified.","code":2002}]}'
+  recorded_at: Tue, 26 Oct 2021 23:46:39 GMT
+recorded_with: VCR 6.0.0

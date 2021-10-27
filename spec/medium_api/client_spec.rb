@@ -12,10 +12,20 @@ RSpec.describe MediumApi::Client do
 
       expect(me['name']).to eq('Test Api Key')
     end
+
+    context 'when api_key is incorrect' do
+      let(:api_key) { 'asd' }
+
+      specify do
+        VCR.use_cassette 'me/incorrect_api_key' do
+          expect { client.me }.to raise_error(MediumApi::Error::UnauthorizedError)
+        end
+      end
+    end
   end
 
   describe '#user_publications' do
-    let(:user_id) { 'test' }
+    let(:user_id) { '1b619f0be1bc842ffc55e8a20c7d6c9129ba896467b90ab9e23b86a36fdd2a67e' }
 
     specify do
       publications = VCR.use_cassette 'user_publications' do
@@ -24,6 +34,16 @@ RSpec.describe MediumApi::Client do
 
       expect(publications.size).to eq(1)
       expect(publications.first['name']).to eq('ILLUMINATION')
+    end
+
+    context 'when api_key is incorrect' do
+      let(:user_id) { 'sdfsdfsdfds' }
+
+      specify do
+        VCR.use_cassette 'user_publications/incorrect_user_id' do
+          expect { client.user_publications(user_id) }.to raise_error(MediumApi::Error::BadRequestError)
+        end
+      end
     end
   end
 
@@ -36,6 +56,18 @@ RSpec.describe MediumApi::Client do
       end
 
       expect(contributors.size).to eq(1030)
+    end
+
+    context 'when publication_id is incorrect' do
+      let(:publication_id) { 'sdfsdfsdfds' }
+
+      specify do
+        VCR.use_cassette 'publication_contributors/incorrect_publication_id' do
+          data = client.publication_contributors(publication_id)
+
+          expect(data).to be_empty
+        end
+      end
     end
   end
 
@@ -55,6 +87,28 @@ RSpec.describe MediumApi::Client do
       end
 
       expect(data['id']).to eq('c051da305038')
+    end
+
+    context 'when requered post_attributes are missing' do
+      let(:post_attributes) do
+        {}
+      end
+
+      specify do
+        VCR.use_cassette 'create_user_post/incorrect_attributes' do
+          expect { client.create_user_post(user_id, post_attributes) }.to raise_error(MediumApi::Error::BadRequestError)
+        end
+      end
+    end
+
+    context 'when requered post_attributes are missing' do
+      let(:user_id) { '10409f26416b73f01893551f0c777589c88185bcd4aafd953b00f32eff8e0be9e' }
+
+      specify do
+        VCR.use_cassette 'create_user_post/incorrect_user_id' do
+          expect { client.create_user_post(user_id, post_attributes) }.to raise_error(MediumApi::Error::ForbiddenError)
+        end
+      end
     end
   end
 end

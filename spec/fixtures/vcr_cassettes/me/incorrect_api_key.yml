@@ -1,0 +1,75 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.medium.com/v1/me
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Bearer asd
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      Date:
+      - Tue, 26 Oct 2021 23:37:21 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '57'
+      Connection:
+      - keep-alive
+      Sepia-Upstream:
+      - medium
+      Access-Control-Allow-Origin:
+      - "*"
+      Cache-Control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      Expires:
+      - Thu, 09 Sep 1999 09:09:09 GMT
+      Link:
+      - <https://medium.com/humans.txt>; rel="humans"
+      Medium-Fulfilled-By:
+      - valencia/main-20211011-154348-f913722d14
+      Pragma:
+      - no-cache
+      Set-Cookie:
+      - uid=lo_bade05aa190d; Path=/; Domain=medium.com; Expires=Wed, 26 Oct 2022 23:37:21
+        GMT; HttpOnly; Secure
+      X-Envoy-Upstream-Service-Time:
+      - '30'
+      X-Obvious-Info:
+      - 20211026-2100-root,11f0149b
+      X-Opentracing:
+      - '{"ot-tracer-spanid":"3862363c31bc8ba4","ot-tracer-traceid":"79bcbf01d0c0870e","ot-tracer-sampled":"true"}'
+      X-Powered-By:
+      - Medium
+      Cf-Cache-Status:
+      - DYNAMIC
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Strict-Transport-Security:
+      - max-age=15552000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 6a4783153d8b76b5-DME
+      Alt-Svc:
+      - h3=":443"; ma=86400, h3-29=":443"; ma=86400, h3-28=":443"; ma=86400, h3-27=":443";
+        ma=86400
+    body:
+      encoding: UTF-8
+      string: '{"errors":[{"message":"Token was invalid.","code":6003}]}'
+  recorded_at: Tue, 26 Oct 2021 23:37:21 GMT
+recorded_with: VCR 6.0.0
