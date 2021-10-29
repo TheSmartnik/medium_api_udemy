@@ -1,4 +1,5 @@
 module MediumApi
+  # @api private
   module Utils
     module_function
 

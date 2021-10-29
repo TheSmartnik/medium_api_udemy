@@ -12,20 +12,30 @@ require 'medium_api/contributor'
 
 module MediumApi
   class << self
+    # Used for configuring MediumApi
+    # @example
+    #   MediumApi.configure do |config|
+    #     config.api_key = ''
+    #   end
+    # @yield [MediumApi::Configuration]
     def configure
       yield configuration
     end
 
+    # @return [MediumApi::Configuration]
     def configuration
       @configuration ||= Configuration.new
     end
 
+    # Method to get current user for provided api_key
+    # @return [MediumApi::User]
     def me
       attributes = client.me
 
       User.new(**Utils.underscore_keys(attributes))
     end
 
+    # @return [MediumApi::Client]
     def client
       @client ||= Client.new(api_key: configuration.api_key)
     end
