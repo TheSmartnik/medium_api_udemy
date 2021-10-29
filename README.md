@@ -1,8 +1,6 @@
 # MediumApi
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/medium_api`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+A ruby api wrapper for medium.com
 
 ## Installation
 
@@ -22,7 +20,31 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+First, you need api key. To do this email yourfriends@medium.com. For more info checkout [official docs](https://github.com/Medium/medium-api-docs#22-self-issued-access-tokens)
+
+### Configure the gem
+```ruby
+MediumApi.configure do |config|
+  config.api_key = ''
+end
+```
+
+### Get current user
+```ruby
+MediumApi.me
+```
+
+### Create a post for current user
+```ruby
+MediumApi.me.create_post(post_attributes)
+```
+
+
+### Get publications for current user
+```
+MediumApi.me.publications
+```
+
 
 ## Development
 
@@ -32,5 +54,5 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/medium_api.
+Bug reports and pull requests are welcome on GitHub at https://github.com/thesmartnik/medium_api_udemy
 
